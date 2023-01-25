@@ -28,3 +28,43 @@ export type RequestError = {
   name: string,
   message: string,
 };
+
+export type TicketType = {
+  id: number,
+  name: string,
+  price: number,
+  isRemote: boolean,
+  includesHotel: boolean,
+  createdAt: Date,
+  updatedAt: Date,
+}
+
+enum Status {
+  paid = "PAID",
+  reserved = "RESERVED"
+}
+
+export type Ticket = {
+  id: number,
+  status: Status,
+  ticketTypeId: number,
+  enrollmentId: number,
+  TicketType: TicketType,
+  createdAt: Date,
+  updatedAt: Date,
+}
+
+enum cardIssuer {
+  visa = "VISA",
+  mastercard = "MASTERCARD"
+}
+
+export type Payment = {
+  id: number,
+  ticketId: number,
+  value: number,
+  cardIssuer: cardIssuer, 
+  cardLastDigits: string,
+  createdAt: Date,
+  updatedAt: Date,
+}
