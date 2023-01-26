@@ -4,67 +4,47 @@ export type ApplicationError = {
 };
 
 export type ViaCEPAddress = {
-  logradouro: string,
-  complemento: string,
-  bairro: string,
-  localidade: string,
-  uf: string,
-
+  logradouro: string;
+  complemento: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
 };
 
 export type AddressEnrollment = {
-  logradouro: string,
-  complemento: string,
-  bairro: string,
-  cidade: string,
-  uf: string,
-  error?: string
-}
-
-export type RequestError = {
-  status: number,
-  data: object | null,
-  statusText: string,
-  name: string,
-  message: string,
+  logradouro: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+  error?: string;
 };
 
-export type TicketType = {
-  id: number,
-  name: string,
-  price: number,
-  isRemote: boolean,
-  includesHotel: boolean,
-  createdAt: Date,
-  updatedAt: Date,
+export type RequestError = {
+  status: number;
+  data: object | null;
+  statusText: string;
+  name: string;
+  message: string;
+};
+
+export enum cardIssuer {
+  visa = 'VISA',
+  mastercard = 'MASTERCARD',
 }
 
-enum Status {
-  paid = "PAID",
-  reserved = "RESERVED"
+export type PaymentParams = {
+  ticketId: number;
+  cardData: {
+    issuer: cardIssuer;
+    number: number;
+    name: string;
+    expirationDate: Date;
+    cvv: number;
+  };
+};
+
+export type TicketSchema ={
+  ticketTypeId:number
 }
 
-export type Ticket = {
-  id: number,
-  status: Status,
-  ticketTypeId: number,
-  enrollmentId: number,
-  TicketType: TicketType,
-  createdAt: Date,
-  updatedAt: Date,
-}
-
-enum cardIssuer {
-  visa = "VISA",
-  mastercard = "MASTERCARD"
-}
-
-export type Payment = {
-  id: number,
-  ticketId: number,
-  value: number,
-  cardIssuer: cardIssuer, 
-  cardLastDigits: string,
-  createdAt: Date,
-  updatedAt: Date,
-}

@@ -97,12 +97,16 @@ enum TicketStatus {
   PAID
 }
 
+enum cardIssuer {
+  VISA
+  MASTERCARD
+}
 model Payment {
   id             Int      @id @default(autoincrement())
   ticketId       Int
   Ticket         Ticket   @relation(fields: [ticketId], references: [id])
   value          Int
-  cardIssuer     String
+  cardIssuer     cardIssuer
   cardLastDigits String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
