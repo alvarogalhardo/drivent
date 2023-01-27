@@ -1,6 +1,6 @@
 import { prisma } from '@/config';
 import { TicketInsert } from '@/protocols';
-import { Enrollment, Ticket, TicketType } from '@prisma/client';
+import { Ticket, TicketType } from '@prisma/client';
 
 async function getArrayOfTIcketTypes(): Promise<TicketType[]> {
   const data = await prisma.ticketType.findMany();
