@@ -44,7 +44,17 @@ export type PaymentParams = {
   };
 };
 
-export type TicketSchema ={
-  ticketTypeId:number
+export type TicketSchema = {
+  ticketTypeId: number;
+};
+
+export enum Status {
+  reserved = 'RESERVED',
+  paid = 'PAID',
 }
 
+export type TicketInsert = {
+  ticketTypeId: number;
+  enrollmentId: number;
+  status: Status;
+};
