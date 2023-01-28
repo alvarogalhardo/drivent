@@ -28,18 +28,13 @@ export type RequestError = {
   message: string;
 };
 
-export enum cardIssuer {
-  visa = 'VISA',
-  mastercard = 'MASTERCARD',
-}
-
 export type PaymentParams = {
   ticketId: number;
   cardData: {
-    issuer: cardIssuer;
-    number: number;
+    issuer: string;
+    number: string;
     name: string;
-    expirationDate: Date;
+    expirationDate: string;
     cvv: number;
   };
 };
